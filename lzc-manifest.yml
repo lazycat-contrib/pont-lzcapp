@@ -1,0 +1,35 @@
+name: Pont
+package: community.lazycat.app.pont
+version: 0.1.3
+min_os_version: 1.3.8
+description: "A web-based tunnel management service supporting both Cloudflare Quick Tunnel and ngrok"
+license: MIT
+homepage: https://github.com/dockers-x/pont
+author: czyt
+
+application:
+  subdomain: pont
+  upstreams:
+    - location: /
+      backend: http://host.lzcapp:13333/
+
+services:
+  pont:
+    # ghcr.io/dockers-x/pont:v0.1.3
+    image: registry.lazycat.cloud/czyt/dockers-x/pont:c45d6bcde2386593
+    network_mode: host
+    user: root
+    environment:
+      - PORT=13333
+      - TZ=CST
+    binds:
+      - /lzcapp/var/data:/app/data
+      - /lzcapp/var/logs:/app/logs
+
+locales:
+  en:
+    name: "Pont"
+    description: "A web-based tunnel management service supporting both Cloudflare Quick Tunnel and ngrok"
+  zh:
+    name: "Pont"
+    description: "一个支持 Cloudflare Quick Tunnel和 ngrok 的 Web 隧道管理服务"
