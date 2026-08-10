@@ -5,10 +5,10 @@ application:
   upstreams:
     - location: /
       backend: http://host.lzcapp:13333/
-
 services:
   pont:
     # ghcr.io/dockers-x/pont:v0.2.1
+    # upstream: ghcr.io/dockers-x/pont:v0.2.1
     image: registry.lazycat.cloud/czyt/dockers-x/pont:cd58ec4fd4cd4dac
     network_mode: host
     user: root
