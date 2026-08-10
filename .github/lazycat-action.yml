@@ -1,0 +1,47 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/application.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: pont
+
+build:
+  run_buildscript: false
+
+images:
+  - id: pont
+    target: service
+    service: pont
+    source: ghcr.io/dockers-x/pont
+    channel: stable
+    sort: semver
+    tag_regex: '^v?\d+\.\d+\.\d+$'
+    delivery:
+      mode: lazycat
+
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+    create_if_missing: true
+    retry:
+      enabled: false
+    application:
+      language: zh
+      name: Pont
+      source: https://github.com/dockers-x/pont
+      source_author: dockers-x
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Pont
+    summary: Pont for LazyCat
