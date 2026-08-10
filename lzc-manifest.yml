@@ -8,8 +8,8 @@ application:
 services:
   pont:
     # ghcr.io/dockers-x/pont:v0.2.1
-    # upstream: ghcr.io/dockers-x/pont:v0.2.1
-    image: registry.lazycat.cloud/czyt/dockers-x/pont:cd58ec4fd4cd4dac
+    # upstream: ghcr.io/dockers-x/pont:v0.2.4
+    image: registry.lazycat.cloud/czyt/dockers-x/pont:1ccd3f62ab4e1d94
     network_mode: host
     user: root
     environment:
